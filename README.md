@@ -1,7 +1,6 @@
 # Campus Radio Map
 
-An interactive map of US college and university radio stations, drawn in the
-ink-and-watercolor style of Calvin and Hobbes. Click a station to hear it live.
+An interactive map of US college and university radio stations. Click a station to hear it live.
 
 **Live:** https://campusradiomap.vercel.app
 
@@ -9,11 +8,10 @@ ink-and-watercolor style of Calvin and Hobbes. Click a station to hear it live.
 
 ## Features
 
-- College and university stations across the US on a hand-drawn map, with Alaska
-  and Hawaii as insets.
+- College and university stations across the US, including Hawaii and Alaska.
 - Plays live in the browser. No account needed.
 - Search stations by name, state, or school.
-- Star a station to save it. Favorites stay when you reload.
+- Star a station to save it.
 - Player controls for shuffle, locate-on-map, and volume.
 
 ## Local dev
