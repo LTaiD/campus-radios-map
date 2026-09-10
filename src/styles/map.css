@@ -1,0 +1,14 @@
+/* Map surface. Owned by the canvas-map agent.
+   Shared primitives (.map-tooltip, tokens) live in theme.css. */
+
+.map-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+/* Canvas fills the wrap. (Replaces the old SVG .usa-map.) */
+.usa-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

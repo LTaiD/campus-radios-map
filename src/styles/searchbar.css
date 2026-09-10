@@ -1,0 +1,220 @@
+/* SearchBar. Owned by the search-bar agent.
+   Shared primitives (.chip, .btn-ink, tooltips) live in theme.css. */
+
+.search-wrap {
+  position: relative;
+  width: min(420px, calc(100vw - 32px));
+}
+
+.search-pill {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border-radius: 999px 999px 999px 999px / 46% 58% 44% 56%;
+  padding: 9px 16px;
+  transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.search-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* uneven watercolor wash over the cream card — lighter center, warmer pooling */
+  background:
+    radial-gradient(120% 140% at 30% 20%, var(--card), color-mix(in srgb, var(--accent) 6%, var(--card)));
+  border: 3.4px solid var(--ink);
+  border-radius: inherit;
+  filter: url(#brush) drop-shadow(2px 3px 4px rgba(38, 34, 28, 0.26));
+  pointer-events: none;
+  transition: filter 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* focus bloom: gentle springy lift + a touch deeper ink shadow */
+.search-pill:focus-within {
+  transform: translateY(-1px);
+}
+
+.search-pill:focus-within::before {
+  filter: url(#brush) drop-shadow(3px 4px 6px rgba(38, 34, 28, 0.3));
+}
+
+.search-pill input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.search-pill input:focus {
+  outline: none;
+}
+
+.search-pill kbd {
+  font-family: var(--font-hand);
+  font-size: 12px;
+  border: 1.8px solid var(--ink);
+  border-radius: 8px 5px 9px 6px;
+  padding: 1px 6px;
+  background: var(--paper);
+  /* stamped-on at a slight off-axis tilt */
+  transform: rotate(-3deg);
+  transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.search-pill:focus-within kbd {
+  transform: rotate(2deg);
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  padding: 6px;
+  transform-origin: top center;
+  animation: search-pop 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes search-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985) rotate(-0.4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+.search-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: min(56vh, 440px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.search-results-list::-webkit-scrollbar {
+  display: none;
+}
+
+.search-results button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 10px 6px 11px 7px;
+  font-family: var(--font-hand);
+  font-size: 16px;
+  text-align: left;
+  color: var(--ink);
+  transition: background 140ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.search-results button:hover {
+  /* watercolor bleed: warm accent wash pooling into the paper */
+  background: color-mix(in srgb, var(--accent) 11%, var(--paper));
+  transform: translateX(2px) rotate(-0.5deg);
+}
+
+.search-results button:active {
+  transform: translateX(2px) scale(0.985);
+}
+
+.result-label {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result-genre {
+  font-size: 13px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(620px, calc(100vw - 24px));
+}
+
+.chip-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 2px 8px;
+}
+
+.chip-row::-webkit-scrollbar {
+  display: none;
+}
+
+.search-results-list li {
+  display: flex;
+  align-items: center;
+}
+
+.search-results-list li > button:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-results .result-like {
+  width: auto;
+  flex-shrink: 0;
+  padding: 6px 8px;
+  opacity: 0.6;
+  transition: opacity 140ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.search-results .result-like:hover {
+  opacity: 1;
+  transform: scale(1.15) rotate(-4deg);
+}
+
+.search-results .result-like:active {
+  transform: scale(0.9);
+}
+
+.search-results .result-like.liked {
+  opacity: 1;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-pill,
+  .search-pill::before,
+  .search-pill kbd,
+  .search-results button,
+  .search-results .result-like {
+    transition: none;
+  }
+  .search-pill:focus-within,
+  .search-pill:focus-within kbd,
+  .search-results button:hover,
+  .search-results button:active,
+  .search-results .result-like:hover,
+  .search-results .result-like:active {
+    transform: none;
+  }
+  .search-results {
+    animation: none;
+  }
+}

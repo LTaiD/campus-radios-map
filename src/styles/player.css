@@ -1,0 +1,372 @@
+/* Audio player. Owned by the audio-player agent.
+   Shared primitives (.icon-btn, .btn-ink, .panel, tooltips) live in theme.css. */
+
+.player {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  width: min(760px, calc(100vw - 24px));
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+
+/* Uneven watercolor wash pooling over the card ground (lighter center,
+   accent/ink pooling toward edges) so the paper never reads flat. */
+.player::after,
+.vol-pop::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  filter: url(#brush-sm);
+  background:
+    radial-gradient(115% 95% at 16% 12%, rgba(181, 67, 47, 0.06), transparent 55%),
+    radial-gradient(95% 120% at 90% 92%, rgba(38, 34, 28, 0.06), transparent 60%),
+    radial-gradient(70% 80% at 62% 45%, rgba(247, 242, 228, 0.45), transparent 72%);
+}
+
+.player-empty {
+  justify-content: center;
+  gap: 10px;
+  font-size: 17px;
+}
+
+.player-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 44px;
+}
+
+.player-logo {
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--ink);
+  border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px;
+  background: var(--paper);
+  padding: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.player-logo:hover {
+  transform: rotate(-1.5deg) scale(1.03);
+}
+
+.player-logo:active {
+  transform: scale(0.97);
+}
+
+.player-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  border-radius: inherit;
+}
+
+.player-station {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.player-station .np-title {
+  font-family: var(--ui-font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.np-artist {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.85;
+}
+
+.np-status {
+  opacity: 0.7;
+}
+
+.np-station {
+  font-size: 11px;
+  letter-spacing: 0.2px;
+  opacity: 0.55;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.np-chip {
+  font-size: 12px;
+  padding: 1px 8px;
+  gap: 4px;
+}
+
+/* Primary action. Compound selector (0,2,0) beats stationcard's .svc-chip
+   (0,1,0), which loads later and otherwise reimposes --card bg.
+   Font is the original hand font; the filled accent color stays. */
+.svc-chip.np-goto {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-family: var(--font-hand);
+  background: var(--accent);
+  color: var(--card);
+}
+
+.svc-chip.np-goto:hover {
+  background: color-mix(in srgb, var(--accent) 86%, var(--ink));
+}
+
+.np-name {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.np-name:hover {
+  text-decoration: underline wavy 1px;
+  text-underline-offset: 3px;
+}
+
+.skel-line {
+  display: block;
+  height: 16px;
+  margin: 2px 0;
+  background: #efe8d4;
+  border: 2px solid var(--ink);
+  border-radius: 8px 5px 9px 6px;
+  filter: url(#brush-sm);
+  animation: skel-pulse 1.1s ease-in-out infinite;
+}
+
+.skel-title {
+  width: 68%;
+  height: 17px;
+}
+
+.skel-artist {
+  width: 44%;
+  height: 13px;
+}
+
+@keyframes skel-pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skel-line {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+.play-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  border: none;
+  background: transparent;
+  color: var(--card);
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Wobbly doubled ink outline + uneven watercolor fill (light bloom off-centre,
+   darker accent pooling toward the lower edge). */
+.play-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50% 46% 52% 48% / 48% 52% 46% 50%;
+  border: 3.4px solid var(--ink);
+  /* flat accent — no light-spot glow */
+  background: var(--accent);
+  filter: url(#brush) drop-shadow(3px 4px 6px rgba(38, 34, 28, 0.28));
+}
+
+.play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.06) rotate(-2deg);
+}
+
+.play-btn:active {
+  transform: translate(-50%, -50%) scale(0.94);
+}
+
+.player-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-left: 44px;
+}
+
+/* Off-axis inked "stamp" — kept from the removed new design (size, rotation, and
+   pulse animation); color stays the old accent/card via the tokens. */
+.live-tag {
+  font-family: var(--ui-font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  border: 3px solid var(--ink);
+  border-radius: 8px 4px 9px 5px / 6px 9px 5px 8px;
+  padding: 2px 9px;
+  transform: rotate(-4deg);
+  box-shadow: 1.5px 2px 0 rgba(38, 34, 28, 0.28);
+  opacity: 0.35;
+}
+
+.live-on {
+  opacity: 1;
+  background: var(--accent);
+  color: var(--card);
+  box-shadow: 1.5px 2px 0 rgba(38, 34, 28, 0.32),
+    inset 0 0 0 1.5px color-mix(in srgb, var(--card) 40%, transparent);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.06) rotate(-1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-on {
+    animation: none;
+  }
+}
+
+.player-clock {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  opacity: 0.75;
+}
+
+.vol-wrap {
+  position: relative;
+}
+
+.vol-pop {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: -8px;
+  width: 48px;
+  height: 168px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vol-pop input[type="range"] {
+  /* track fills the full pop height so the knob reaches the very top at max
+     (was 156 inside a 168 box -> ~6px dead gap that read as "stops at ~90%") */
+  width: 168px;
+  height: 22px;
+  margin: 0;
+  transform: rotate(-90deg);
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.vol-pop input[type="range"]:focus {
+  outline: none;
+}
+
+.vol-pop input[type="range"]:focus-visible::-webkit-slider-runnable-track {
+  outline: 2.5px dashed var(--accent);
+  outline-offset: 3px;
+}
+
+.vol-pop input[type="range"]::-webkit-slider-runnable-track {
+  height: 12px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0 var(--vol, 50%),
+    var(--paper) var(--vol, 50%) 100%
+  );
+  border: 2.2px solid var(--ink);
+  border-radius: 8px 6px 9px 7px / 14px 12px 15px 13px;
+}
+
+.vol-pop input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 26px;
+  margin-top: -9.2px;
+  background: var(--accent); /* flat — no light-spot glow */
+  border: 2.2px solid var(--ink);
+  border-radius: 6px 11px 7px 12px / 12px 7px 11px 6px;
+}
+
+.vol-pop input[type="range"]::-moz-range-track {
+  height: 12px;
+  background: var(--paper);
+  border: 2.2px solid var(--ink);
+  border-radius: 8px 6px 9px 7px / 14px 12px 15px 13px;
+}
+
+.vol-pop input[type="range"]::-moz-range-progress {
+  height: 12px;
+  background: var(--accent);
+  border: 2.2px solid var(--ink);
+  border-radius: 8px 3px 3px 7px / 14px 6px 6px 13px;
+}
+
+.vol-pop input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 26px;
+  background: var(--accent); /* flat — no light-spot glow */
+  border: 2.2px solid var(--ink);
+  border-radius: 6px 11px 7px 12px / 12px 7px 11px 6px;
+}
+
+@media (max-width: 767px) {
+  .player {
+    bottom: 8px;
+    flex-wrap: wrap;
+  }
+}

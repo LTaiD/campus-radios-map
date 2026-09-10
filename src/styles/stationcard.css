@@ -1,0 +1,175 @@
+/* Station card (preview + selected). Owned by the station-card agent.
+   Shared primitives (.panel, .card-close, .btn-ink) live in theme.css. */
+
+.station-card {
+  position: fixed;
+  z-index: 30;
+  width: 360px;
+  max-height: min(420px, calc(100vh - 190px));
+  padding: 16px;
+  overflow-y: auto;
+  top: 90px;
+  left: 20px;
+}
+
+/* watercolor wash + cream paper-tooth ground, blooming over the .panel fill */
+.station-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  /* ponytail: noise-grain turbulence layer removed — texture now comes from the
+     app-wide photo overlay in theme.css. */
+  background:
+    radial-gradient(130% 85% at 14% 0%, rgba(181, 67, 47, 0.07), transparent 55%),
+    radial-gradient(70% 45% at 88% 104%, rgba(38, 34, 28, 0.05), transparent 60%),
+    radial-gradient(150% 130% at 50% 45%, transparent 58%, rgba(38, 34, 28, 0.06));
+}
+
+.card-head {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  padding-right: 28px;
+}
+
+.card-head img {
+  width: 52px;
+  height: 52px;
+  border: 2.2px solid var(--ink);
+  border-radius: 13px 8px 14px 9px / 9px 14px 8px 13px;
+  background: var(--paper);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.card-callsign {
+  font-family: var(--ui-font);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  margin: 2px 0 4px;
+}
+
+.card-city {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.card-college {
+  margin: 2px 0 0;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.card-section {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 10' preserveAspectRatio='none'%3E%3Cpath d='M2 5.1 11 4.3 19 5.8 31 4.9 40 3.6 49 5.4 61 4.7 70 6.2 82 5 91 3.9 103 5.6 112 4.4 124 5.9 133 4.1 145 5.2 154 6.3 166 4.6 175 5.5 187 3.8 196 5.7 208 4.9 217 6.1 229 4.3 238 5.4 250 4 259 5.8 271 4.7 280 6 292 4.4 301 5.3 311 4.8 318 5.2' fill='none' stroke='%2326221c' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round' opacity='0.7'/%3E%3C/svg%3E") no-repeat left top / 100% 10px;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.genre-tag {
+  display: inline-block;
+  font-size: 13px;
+  text-transform: capitalize;
+  border: 1.8px solid var(--ink);
+  border-radius: 999px / 58% 42% 52% 48%;
+  padding: 1px 10px;
+  background: var(--paper);
+  box-shadow: 1.5px 2px 0 rgba(38, 34, 28, 0.16);
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* each pill sits a touch off-axis so the row reads hand-placed, not stamped */
+.genre-tag:nth-child(odd) {
+  transform: rotate(-1.4deg);
+}
+.genre-tag:nth-child(even) {
+  transform: rotate(1.1deg);
+}
+
+.genre-tag:hover {
+  transform: translateY(-1.5px) rotate(0deg) scale(1.04);
+}
+
+.svc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-family: var(--font-hand);
+  border: 2px solid var(--ink);
+  border-radius: 10px 6px 11px 7px / 7px 11px 6px 10px;
+  padding: 2px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--card);
+  box-shadow: 2px 2.5px 4px rgba(38, 34, 28, 0.22);
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 140ms;
+}
+
+/* hand-inked wobble on the chip's link icon, via the shared theme filter */
+.svc-chip svg {
+  filter: url(#brush-sm);
+}
+
+.svc-chip:hover {
+  transform: translateY(-1.5px) rotate(-0.6deg);
+  box-shadow: 3px 4px 6px rgba(38, 34, 28, 0.26);
+}
+
+.svc-chip:active {
+  transform: translate(1px, 2px) scale(0.97);
+  box-shadow: 1px 1px 2px rgba(38, 34, 28, 0.2);
+}
+
+.muted {
+  opacity: 0.65;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genre-tag,
+  .svc-chip {
+    transition: none;
+  }
+  .genre-tag:hover,
+  .svc-chip:hover {
+    transform: none;
+  }
+}
+
+/* Transparent click-catcher behind the SELECTED card (both modes). Sits above
+   the map but below the player/corner so those stay usable; a click on the map
+   or empty area closes the card. */
+.card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 24;
+}
+
+@media (max-width: 767px) {
+  .station-card {
+    left: 8px;
+    right: 8px;
+    top: auto;
+    bottom: 104px;
+    width: auto;
+    max-height: 46vh;
+  }
+}

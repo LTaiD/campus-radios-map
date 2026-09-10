@@ -1,0 +1,444 @@
+[
+ {
+  "school": "Princeton",
+  "uuid": "fbd47272-fdc6-457c-ac93-98410bb4c777",
+  "name": "WPRB 103.3 FM - Princeton, NJ",
+  "lat": 40.3487,
+  "lng": -74.6593,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://wprb.streamguys1.com/live"
+ },
+ {
+  "school": "MIT",
+  "uuid": "a707f84a-9ae4-40bf-a176-fcb4cdbc9fbe",
+  "name": "WMBR 88.1",
+  "lat": 42.3592,
+  "lng": -71.0935,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://wmbr.org:8002/hi"
+ },
+ {
+  "school": "Harvard",
+  "uuid": "96187adc-0601-11e8-ae97-52543be04c81",
+  "name": "WHRB 95.3 - Harvard Radio Broadcasting - Cambridge, MA",
+  "lat": 42.3736,
+  "lng": -71.119,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://stream.whrb.org:8000/whrb-mp3"
+ },
+ {
+  "school": "Stanford",
+  "uuid": "36f913b6-88ab-4f29-ae89-4ac277047e82",
+  "name": "KZSU 90.1 FM Stanford University",
+  "lat": 37.4275,
+  "lng": -122.1697,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://kzsu-streams.stanford.edu/kzsu-1-256.mp3"
+ },
+ {
+  "school": "UChicago",
+  "uuid": "49bf370a-c7d0-45d1-9afa-28efb2067565",
+  "name": "WHPK",
+  "lat": 41.7886,
+  "lng": -87.5987,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "https://whpk-stream.uchicago.edu/stream"
+ },
+ {
+  "school": "Duke",
+  "uuid": "11678f14-ff34-48cf-bc60-76d9427161fd",
+  "name": "WXDU 88.7 FM Duke University Radio",
+  "lat": 36.0014,
+  "lng": -78.9382,
+  "geo": [
+   36.00040440621273,
+   -78.92981880140881
+  ],
+  "have": true,
+  "url": "http://152.3.0.231:8000/wxdu128.mp3"
+ },
+ {
+  "school": "Northwestern",
+  "uuid": "7bac7da1-3be9-4688-b610-f02041c82aa8",
+  "name": "WNUR",
+  "lat": 42.0565,
+  "lng": -87.6753,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://www.wnur.org/api/stream"
+ },
+ {
+  "school": "Brown",
+  "uuid": "200fb773-6b90-11ea-b1cf-52543be04c81",
+  "name": "WBRU",
+  "lat": 41.8268,
+  "lng": -71.4025,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "https://s3.radio.co/s115121de1/listen"
+ },
+ {
+  "school": "Cornell",
+  "uuid": "7f685478-c47f-49d8-861c-1e72c2689f25",
+  "name": "WVBR",
+  "lat": 42.4534,
+  "lng": -76.4735,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://streaming.live365.com/a25496"
+ },
+ {
+  "school": "Columbia",
+  "uuid": "a214f12a-609e-491c-890a-7658235150d1",
+  "name": "WKCR",
+  "lat": 40.8075,
+  "lng": -73.9626,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://wkcr.streamguys1.com/live"
+ },
+ {
+  "school": "Notre Dame",
+  "uuid": "4e357979-e516-445f-ba3e-dee40608b5c1",
+  "name": "WVFI Radio",
+  "lat": 41.7002,
+  "lng": -86.2379,
+  "geo": [
+   41.71721035358795,
+   -86.24244978878659
+  ],
+  "have": true,
+  "url": "https://s4.radio.co/s49f365ee3/listen"
+ },
+ {
+  "school": "UCLA",
+  "uuid": "cd17491d-80a2-484f-9e33-75039fa9c617",
+  "name": "UCLA Radio",
+  "lat": 34.0689,
+  "lng": -118.4452,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://live.uclaradio.com/listen/ucla_radio/radio.mp3"
+ },
+ {
+  "school": "Georgetown",
+  "uuid": "7ed0d055-8856-40da-b747-5b830523083d",
+  "name": "WGTB - Georgetown Radio",
+  "lat": 38.9076,
+  "lng": -77.0723,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://s4.radio.co/sbeba14c92/listen"
+ },
+ {
+  "school": "CMU",
+  "uuid": "5fd7b40c-cc33-479b-8295-4c79ba76cf08",
+  "name": "WRCT",
+  "lat": 40.4433,
+  "lng": -79.9436,
+  "geo": [
+   40.44416149307696,
+   -79.94343817234041
+  ],
+  "have": false,
+  "url": "http://stream.wrct.org/wrct-hi.mp3"
+ },
+ {
+  "school": "UVA",
+  "uuid": "93e94bff-493e-48e3-809d-9a4c9ce6a19b",
+  "name": "WXTJ 100.1 FM | Student Radio @ The University of Virginia, Charlottesville, VA",
+  "lat": 38.0336,
+  "lng": -78.508,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://streams.wtju.net/wxtj-live.mp3"
+ },
+ {
+  "school": "Michigan",
+  "uuid": "9ff16372-f398-4ae6-93fd-d0d614ebbc18",
+  "name": "WCBN",
+  "lat": 42.278,
+  "lng": -83.7382,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "http://floyd.wcbn.org:8000/wcbn-hi.mp3"
+ },
+ {
+  "school": "NYU",
+  "uuid": "a44129d2-def2-4d18-89c5-03f10db95043",
+  "name": "WNYU 89.1",
+  "lat": 40.7295,
+  "lng": -73.9965,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "http://cinema.acs.its.nyu.edu:8000/wnyu128.mp3"
+ },
+ {
+  "school": "UNC",
+  "uuid": "9710cbbd-e9d5-4e79-8021-1d9bbb18d665",
+  "name": "WXYC",
+  "lat": 35.9049,
+  "lng": -79.0469,
+  "geo": [
+   35.910467917765104,
+   -79.0470975637436
+  ],
+  "have": false,
+  "url": "https://audio-mp3.ibiblio.org/wxyc.mp3"
+ },
+ {
+  "school": "Tufts",
+  "uuid": "962af1a3-0601-11e8-ae97-52543be04c81",
+  "name": "WMFO 91.5 Tufts University - Medford, MA",
+  "lat": 42.4075,
+  "lng": -71.119,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://new-webstream.wmfo.org/;"
+ },
+ {
+  "school": "UCSB",
+  "uuid": "4af97ba5-4546-4132-a94a-ebca09214cfb",
+  "name": "KCSB UC Santa Barbara",
+  "lat": 34.414,
+  "lng": -119.8489,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "https://kcsb.streamguys1.com/live"
+ },
+ {
+  "school": "Rochester",
+  "uuid": "e9f8678d-5d4b-47f8-90e7-0e7b7e560346",
+  "name": "WRUR - The Route",
+  "lat": 43.1284,
+  "lng": -77.6285,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://27143.live.streamtheworld.com/WRURFM.mp3"
+ },
+ {
+  "school": "Boston College",
+  "uuid": "2768b05d-96a2-4b74-9f92-c0fa7e979eb5",
+  "name": "WZBC ",
+  "lat": 42.3355,
+  "lng": -71.1685,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://stream.wzbc.org/wzbc"
+ },
+ {
+  "school": "UCSD",
+  "uuid": "440269f7-20fd-4442-8e86-6c8251a11bf5",
+  "name": "KSDT",
+  "lat": 32.8801,
+  "lng": -117.234,
+  "geo": [
+   32.83947181026471,
+   -117.27450370788576
+  ],
+  "have": true,
+  "url": "https://s4.radio.co/s2c33c7adb/listen"
+ },
+ {
+  "school": "UC Irvine",
+  "uuid": "961d858e-0601-11e8-ae97-52543be04c81",
+  "name": "KUCI 88.9 Irvine, CA",
+  "lat": 33.6405,
+  "lng": -117.8443,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://streamer.kuci.org:8000/high"
+ },
+ {
+  "school": "UC Davis",
+  "uuid": "f234e5ee-c3d8-4d75-ba14-53cfe7670340",
+  "name": "KDVS 90.3 FM (UC Davis)",
+  "lat": 38.5382,
+  "lng": -121.7617,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "https://listen.kdvs.org/stream"
+ },
+ {
+  "school": "Georgia Tech",
+  "uuid": "960dd86c-0601-11e8-ae97-52543be04c81",
+  "name": "WREK 91.1 Atlanta, GA",
+  "lat": 33.7756,
+  "lng": -84.3963,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://streaming.wrek.org:8000/main/128kb.mp3"
+ },
+ {
+  "school": "UT Austin",
+  "uuid": "51f82c18-dc04-44f2-8437-6d734468a257",
+  "name": "KVRX",
+  "lat": 30.2849,
+  "lng": -97.7341,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://kvrx.org/now_playing/stream"
+ },
+ {
+  "school": "Wisconsin",
+  "uuid": "71d246d6-cc3b-451f-b1b9-4e421ccc259a",
+  "name": "WSUM College Radio - Tulum Connect",
+  "lat": 43.0766,
+  "lng": -89.4125,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://ice23.securenetsystems.net/WSUMFM"
+ },
+ {
+  "school": "UIUC",
+  "uuid": "e7945309-5acf-40fd-a847-d81a7ab47879",
+  "name": "WPGU",
+  "lat": 40.102,
+  "lng": -88.2272,
+  "geo": [
+   40.11020841202814,
+   -88.22866916656494
+  ],
+  "have": true,
+  "url": "http://ice64.securenetsystems.net/WPGUFM"
+ },
+ {
+  "school": "Florida",
+  "uuid": "407cc7fd-c2e8-4985-9602-56f0114d9a4c",
+  "name": "WGHQ 920 Magic 92.5 FM",
+  "lat": 29.6516,
+  "lng": -82.3248,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://ais-sa1.streamon.fm/7815_128k.aac"
+ },
+ {
+  "school": "Texas A&M",
+  "uuid": "93010274-418c-4288-b3b3-db6e75ada81e",
+  "name": "KANM",
+  "lat": 30.6188,
+  "lng": -96.3365,
+  "geo": [
+   30.612,
+   -96.342
+  ],
+  "have": true,
+  "url": "https://icecast.kanm.org/listen"
+ },
+ {
+  "school": "Arizona State",
+  "uuid": "32811bda-1a78-40b5-a572-d3e17c055da3",
+  "name": "The Blaze radio",
+  "lat": 33.4242,
+  "lng": -111.9281,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/BLZE_1.mp3"
+ },
+ {
+  "school": "Howard",
+  "uuid": "96419611-0601-11e8-ae97-52543be04c81",
+  "name": "WHUR-HD3 \"96.3 WHBC\" Howard University - Washington, DC",
+  "lat": 38.9227,
+  "lng": -77.0194,
+  "geo": [
+   null,
+   null
+  ],
+  "have": true,
+  "url": "http://whurhd3.streamon.fm:8000/WHURHD3-48k.aac"
+ },
+ {
+  "school": "Cal Poly Humboldt",
+  "uuid": "4741842f-1607-11e9-a80b-52543be04c81",
+  "name": "KRFH",
+  "lat": 40.8734,
+  "lng": -123.9358,
+  "geo": [
+   null,
+   null
+  ],
+  "have": false,
+  "url": "http://amber.streamguys.com:4690/"
+ }
+]

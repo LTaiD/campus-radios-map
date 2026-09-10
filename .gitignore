@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.log
+scripts/.cache/
+.vercel
+.vercel_python_packages
+.venv
+.env
+.env.local
